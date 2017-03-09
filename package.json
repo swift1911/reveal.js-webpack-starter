@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "lodash": "^4.13.1",
-    "reveal.js": "^3.3.0"
+    "reveal.js": "^3.4.1",
+    "impress.js": "^0.4.11"
   },
   "engines": {
     "node": ">=5.0"

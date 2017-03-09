@@ -1,28 +1,81 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="UTF-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-  <meta http-equiv="x-ua-compatible" content="IE=edge" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
 
-  <title>TODO: Change Title</title>
+    <title>TODO: Change Title</title>
 
 
-  <!-- Printing and PDF exports -->
-  <!-- <script>
-     var link = document.createElement( 'link' );
-     link.rel = 'stylesheet';
-     link.type = 'text/css';
-     link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-     document.getElementsByTagName( 'head' )[0].appendChild( link );
-   </script>-->
+    <!-- Printing and PDF exports -->
+    <!--<script>-->
+        <!--var link = document.createElement('link');-->
+        <!--link.rel = 'stylesheet';-->
+        <!--link.type = 'text/css';-->
+        <!--link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';-->
+        <!--document.getElementsByTagName('head')[0].appendChild(link);-->
+    <!--</script>-->
 </head>
 <body>
 <div class="reveal">
-  <div class="slides">
-    <section>TODO: Add Title Slide</section>
-    <section>TODO: Add Content Slides</section>
-  </div>
+    <div class="slides">
+        <section>
+            发布系统CD流程统一方案
+        </section>
+        <section>
+            <section>1. 技术方案</section>
+            <section>
+                <p>前后端采用什么技术?</p>
+            </section>
+            <section>
+                <p>前端采用Vue，后端采用Flask</p>
+                <p>Vue的优点在于前端组件化开发，并且现在的发布系统前端就是Vue写的，业务团队也有使用，此技术比较成熟</p>
+                <p>后端采用Flask的优点在于开发速度快，帅辉也比较熟悉，框架是我自己写的，可维护性比较好</p>
+            </section>
+        </section>
+        <section data-transition="fade-in fade-out">
+            <section>2. 包的替换标准</section>
+            <section>
+                <p class="fragment grow">部署包采用ansible进行替换</p>
+                <p>二手房这边采用ssh</p>
+                <p>新房和基础采用ansible</p>
+                <p>ansible的执行是幂等的，另外复用还有callback都很不错</p>
+            </section>
+
+        </section>
+        <section>
+            <section>3. 权限流程</section>
+            <section>
+                <p>采用给每个env打tag的方式控制流程</p>
+                <p class="fragment grow">记录每次test pass的记录以便追溯</p>
+                <p class="fragment red">对于有测试的项目，应当由测试点击test pass，无测试的项目开发自行点击</p>
+            </section>
+            <section>
+                <p>必须严格按照测试环境、预发布环境、生产环境顺序上线</p>
+                <p class="fragment grow">禁止跳过某一步骤</p>
+            </section>
+            <section>
+                <p>测试有预发布环境和测试环境的发布权限，开发只有生产的权限</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <p>4. 和其他步骤的结合</p>
+            </section>
+            <section>
+                <p>测试环境发布完成后调用jenkins跑自动化测试用例</p>
+            </section>
+            <section>
+                <p class="fragment grow">在项目发布之前生成启动脚本</p>
+                <p class="fragment grow">上海这边level 1的标准是生成启动脚本</p>
+                <p class="fragment grow">建议采取此方案</p>
+            </section>
+            <section>
+                <p>新的发布系统，支持发CDN发静态资源，上海的node项目已支持</p>
+            </section>
+        </section>
+    </div>
 </div>
 
 <script src="presentation.bundle.js"></script>
